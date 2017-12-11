@@ -76,4 +76,16 @@ controller.setupWebserver(3000, function(err, express_webserver) {
         };
         bot.say(msg);
     });
+
+    express_webserver.post('/stackoverflow/incoming', function(req, res) {
+        console.log(req.body);
+        var msg1 = {title: "Message received, loud and clear", text: req.body.message};
+        var msg = {
+            type: "message",
+            channel: "C4AB39ABH", // TODO this should be configurable
+            attachments: [ msg1 ]
+        };
+        bot.say(msg);
+        res.send('OK');
+    });
 });
