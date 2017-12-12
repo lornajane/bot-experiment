@@ -65,7 +65,6 @@ controller.setupWebserver(3000, function(err, express_webserver) {
     });
 
     express_webserver.post('/stackoverflow/incoming', function(req, res) {
-        console.log(req.body);
         // only handling the event type "new-question" so far
         var q;
 
