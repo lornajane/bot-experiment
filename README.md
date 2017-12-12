@@ -61,7 +61,8 @@ If you're using a tool such as Postman, you'll set up your request as follows:
 
 ### Environment Variables
 
-* `token` (note lower case!) should contain the auth token that this bot uses to connect to slack - authorized users can see the management page here https://ibm-cloudplatform.slack.com/services/B6ATR6CGP (the `@slacktesting-bot` account is here https://ibm-cloudplatform.slack.com/services/B6XTWAP2S)
+* `SLACK_BOT_TOKEN` should contain the auth token that this bot uses to connect to slack - authorized users can see the management page here https://ibm-cloudplatform.slack.com/services/B6ATR6CGP (the `@slacktesting-bot` account is here https://ibm-cloudplatform.slack.com/services/B6XTWAP2S)
+* `SLACK_CHANNEL_ID` put the ID of the channel we should be listening in and talking back to.  You can invite the bot into the channel and ask it what channel this is (see abilities below)
 
 ## Behaviour
 

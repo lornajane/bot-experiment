@@ -1,4 +1,4 @@
-if (!process.env.token) {
+if (!process.env.SLACK_BOT_TOKEN) {
     console.log('Error: Specify token in environment');
     process.exit(1);
 }
@@ -13,7 +13,7 @@ var controller = Botkit.slackbot({
 });
 
 var bot = controller.spawn({
-    token: process.env.token
+    token: process.env.SLACK_BOT_TOKEN
 }).startRTM();
 
 /*** Respond to people talking to the bot ***/
@@ -38,7 +38,7 @@ controller.hears(['what channel', 'channel ID'], 'direct_mention,mention', funct
 controller.on('reaction_added', function(bot, message) {
 
     // we really only care about "our" channel but we'll get events from them all!
-    if(message.item.channel && message.item.channel == "C4AB39ABH") {  // TODO configurable channel name please
+    if(message.item.channel && message.item.channel == process.env.SLACK_CHANNEL_ID) {
         bot.api.users.info({user: message.user}, function(err, response) {
             user = response.user;
             var reaction = user.name + " reacted with " + message.reaction;
@@ -58,7 +58,7 @@ controller.setupWebserver(3000, function(err, express_webserver) {
 
         var msg = {
             type: "message",
-            channel: "C4AB39ABH", // TODO this should be configurable
+            channel: process.env.SLACK_CHANNEL_ID,
             text: "Someone rang? (I received a web request)"
         };
         bot.say(msg);
@@ -99,7 +99,7 @@ controller.setupWebserver(3000, function(err, express_webserver) {
             };
             var msg = {
                 type: "message",
-                channel: "C4AB39ABH", // TODO this should be configurable
+                channel: process.env.SLACK_CHANNEL_ID,
                 attachments: [ msg1 ]
             };
             bot.say(msg);
