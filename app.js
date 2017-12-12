@@ -43,8 +43,12 @@ controller.on('reaction_added', function(bot, message) {
             user = response.user;
             var reaction = user.name + " reacted with " + message.reaction;
             bot.api.conversations.history({channel: message.item.channel, latest: message.item.ts, inclusive: true, limit:1}, function(err, response) {
-                var orig_message = response.messages[0].text;
-                reaction += " to this message: " + orig_message;
+                var orig_message = response.messages[0];
+                if(orig_message.text) {
+                    reaction += " to this message: " + orig_message.text;
+                } else {
+                    reaction += " to this message: " + orig_message.attachments[0].title;
+                }
                 console.log(reaction);
             });
         });
