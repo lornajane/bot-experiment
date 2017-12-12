@@ -29,14 +29,8 @@ controller.hears(['hello', 'hi'], 'direct_message,direct_mention,mention', funct
     });
 });
 
-controller.hears(['what channel', 'channel ID'], 'direct_message,direct_mention,mention', function(bot, message) {
-    controller.storage.users.get(message.user, function(err, user) {
-        if (user && user.name) {
-            bot.reply(message, 'Hello ' + user.name + '!!');
-        } else {
-            bot.reply(message, 'Hello.');
-        }
-    });
+controller.hears(['what channel', 'channel ID'], 'direct_mention,mention', function(bot, message) {
+    bot.reply(message, 'Current channel ID: ' + message.channel);
 });
 
 /*** Understand reactions ***/

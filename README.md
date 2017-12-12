@@ -75,6 +75,10 @@ When we store a new question to the database, we also post it to `http://sobot.m
 
 If you say "hi" or "hello" in a message with the bot's name in it, it'll say hello back again (greeting you by name if it can get that data)
 
+### Give the ID of the current channel
+
+The channel ID for the bot to talk to is used in setup.  You can invite it to a channel and ask it for the channel ID with `@stacktesting-bot tell me the channel ID` (then you can kick it from the channel afterwards if appropriate)
+
 ### Silently understand reactions
 
 There is stub code in the bot that listens to reactions in a particular channel and knows who reacted, with what, to which message.  For now, this just logs to the console.
