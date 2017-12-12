@@ -1,6 +1,6 @@
 # StackOverflow Slack Integration Bot
 
-This bot helps us with our StackOverflow Dashboard by providing notifications and other integrations in channel
+This bot helps us with our StackOverflow Dashboard by providing notifications and other integrations in channel.  It's built of [BotKit](https://botkit.ai/) and has adaptations to allow it to run agagainst our Slack Enterprise Grid platform.
 
 ## Setup
 
